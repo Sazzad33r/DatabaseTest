@@ -1,0 +1,33 @@
+﻿@page
+@model DatabaseTest.Pages.Clients.IndexModel
+@{
+    ViewData["Title"] = "See List";
+}
+
+<br />
+<h2>List of User</h2>
+<a class="btn btn-primary btn-sm" href="/Clients/Create">Create New Entry</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.clientInfoList)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Role</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Clients/Edit?id=">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Clients/Delete?id=">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
