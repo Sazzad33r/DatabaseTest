@@ -1,0 +1,30 @@
+﻿@page
+@using System.Data.SqlClient;
+
+
+@{
+    string id = Request.Query["id"];
+
+    try
+    {
+        string conString = @"Data Source=.\sqlexpress;Initial Catalog=test;Integrated Security=True";
+        using (SqlConnection con = new SqlConnection(conString))
+        {
+            con.Open();
+            string cmdText = "delete from info where ID = @id";
+            using (SqlCommand cmd = new SqlCommand(cmdText, con))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
+        }
+    }
+    catch(Exception ex)
+    {
+        <p>
+        @ex.Message;
+        </p>
+    }
+    Response.Redirect("/Clients/Index");
+}
