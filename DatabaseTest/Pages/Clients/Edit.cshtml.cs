@@ -42,7 +42,7 @@ namespace DatabaseTest.Pages.Clients
             }
             catch(Exception ex)
             {
-                errorMsg = ex.Message;
+                errorMsg = ex.Message + "\nID: " + ID;
             }
         }
 

@@ -7,6 +7,8 @@ namespace DatabaseTest.Pages.Clients
     public class IndexModel : PageModel
     {
         public List<ClientInfo> clientInfoList = new List<ClientInfo>();
+        [BindProperty]
+        public string targetValue { get; set; } = "";
         public void OnGet()
         {
             try
@@ -44,8 +46,8 @@ namespace DatabaseTest.Pages.Clients
 
     public class ClientInfo
     {
-        public string ID { get; set; }
-        public string Name { get; set; }
-        public string Role { get; set;}
+        public string ID { get; set; } = "";
+        public string Name { get; set; } = "";
+        public string Role { get; set; } = "";
     }
 }
